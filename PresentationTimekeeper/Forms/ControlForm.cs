@@ -1,19 +1,23 @@
-﻿using System;
+﻿using PresentationTimekeeper.Dto;
+using PresentationTimekeeper.Util;
+using System;
 using System.Windows.Forms;
 
 namespace PresentationTimekeeper.Forms
 {
     public partial class ControlForm : Form
     {
-        private bool _mainTimerIsRunning = false;
-        private int _targetTime = 60;
+        public Setting Setting { get; set; }
+        private int _targetTime;
+        private bool _mainTimerIsRunning;
         private int _timeLeft;
-        private bool _doCountUp = true;
+        private bool _doCountUp;
 
         public ControlForm()
         {
             InitializeComponent();
-            ResetTimer();
+            Setting = new Setting();
+            LoadSetting();
         }
 
         private void StartStopButton_Click(object sender, EventArgs e)
@@ -48,15 +52,9 @@ namespace PresentationTimekeeper.Forms
 
             second = second < 0 ? second * -1 : second;
 
-            var h = second / (60 * 60);
-            var m = second / 60;
-            var s = second % 60;
+            var hmsStr = Utility.Second2HmsString(second);
 
-            var hStr = SubstringFromRight($"0{h}", 2);
-            var mStr = SubstringFromRight($"0{m}", 2);
-            var sStr = SubstringFromRight($"0{s}", 2);
-
-            timeText.Text = $"{hStr}:{mStr}:{sStr}";
+            timeText.Text = $"{hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second}";
         }
 
         private void StartTimer()
@@ -81,19 +79,21 @@ namespace PresentationTimekeeper.Forms
             UpdateTimeText(_timeLeft);
         }
 
-        private int ConvertHmsToSec(int hour, int minute, int second)
+        public void LoadSetting()
         {
-            return hour * 60 * 60 + minute * 60 + second;
+            _targetTime = Setting.TargetTime;
+            _doCountUp = Setting.DoCountUp;
+            overtimeBehaviorLabel.Text = _doCountUp ? "超過時間表示" : "停止";
+            var hmsStr = Utility.Second2HmsString(_targetTime);
+            hourLabel.Text = hmsStr.Hour;
+            minuteLabel.Text = hmsStr.Minute;
+            secondLabel.Text = hmsStr.Second;
+            ResetTimer();
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
             ResetTimer();
-        }
-
-        private static string SubstringFromRight(string str, int length)
-        {
-            return str.Substring(str.Length - length, length);
         }
 
         private void SettingButton_Click(object sender, EventArgs e)

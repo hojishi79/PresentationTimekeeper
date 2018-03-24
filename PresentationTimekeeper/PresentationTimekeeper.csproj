@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\HmsInt.cs" />
+    <Compile Include="Dto\HmsString.cs" />
+    <Compile Include="Dto\Setting.cs" />
     <Compile Include="Forms\ControlForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +68,7 @@
     <Compile Include="Forms\TimeSignForm.Designer.cs">
       <DependentUpon>TimeSignForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\Utility.cs" />
     <EmbeddedResource Include="Forms\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>
     </EmbeddedResource>
