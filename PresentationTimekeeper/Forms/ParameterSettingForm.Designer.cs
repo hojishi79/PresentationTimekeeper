@@ -40,10 +40,17 @@
             this.stopRadio = new System.Windows.Forms.RadioButton();
             this.submitButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textColorButton = new System.Windows.Forms.Button();
+            this.backGroundColorButton = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.omitHourCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.hourUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minuteUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondUpDown)).BeginInit();
             this.overtimeBehaviorGroup.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -61,7 +68,7 @@
             // 
             this.hourUpDown.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.hourUpDown.Location = new System.Drawing.Point(26, 54);
-            this.hourUpDown.Margin = new System.Windows.Forms.Padding(5);
+            this.hourUpDown.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.hourUpDown.Maximum = new decimal(new int[] {
             24,
             0,
@@ -86,7 +93,7 @@
             // 
             this.minuteUpDown.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.minuteUpDown.Location = new System.Drawing.Point(224, 54);
-            this.minuteUpDown.Margin = new System.Windows.Forms.Padding(5);
+            this.minuteUpDown.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.minuteUpDown.Maximum = new decimal(new int[] {
             59,
             0,
@@ -111,7 +118,7 @@
             // 
             this.secondUpDown.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.secondUpDown.Location = new System.Drawing.Point(401, 54);
-            this.secondUpDown.Margin = new System.Windows.Forms.Padding(5);
+            this.secondUpDown.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.secondUpDown.Maximum = new decimal(new int[] {
             59,
             0,
@@ -138,9 +145,9 @@
             this.overtimeBehaviorGroup.Controls.Add(this.stopRadio);
             this.overtimeBehaviorGroup.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.overtimeBehaviorGroup.Location = new System.Drawing.Point(26, 123);
-            this.overtimeBehaviorGroup.Margin = new System.Windows.Forms.Padding(5);
+            this.overtimeBehaviorGroup.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.overtimeBehaviorGroup.Name = "overtimeBehaviorGroup";
-            this.overtimeBehaviorGroup.Padding = new System.Windows.Forms.Padding(5);
+            this.overtimeBehaviorGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.overtimeBehaviorGroup.Size = new System.Drawing.Size(396, 98);
             this.overtimeBehaviorGroup.TabIndex = 8;
             this.overtimeBehaviorGroup.TabStop = false;
@@ -150,7 +157,7 @@
             // 
             this.countupRadio.AutoSize = true;
             this.countupRadio.Location = new System.Drawing.Point(162, 40);
-            this.countupRadio.Margin = new System.Windows.Forms.Padding(5);
+            this.countupRadio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.countupRadio.Name = "countupRadio";
             this.countupRadio.Size = new System.Drawing.Size(188, 34);
             this.countupRadio.TabIndex = 1;
@@ -162,7 +169,7 @@
             this.stopRadio.AutoSize = true;
             this.stopRadio.Checked = true;
             this.stopRadio.Location = new System.Drawing.Point(24, 40);
-            this.stopRadio.Margin = new System.Windows.Forms.Padding(5);
+            this.stopRadio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.stopRadio.Name = "stopRadio";
             this.stopRadio.Size = new System.Drawing.Size(92, 34);
             this.stopRadio.TabIndex = 0;
@@ -173,8 +180,8 @@
             // submitButton
             // 
             this.submitButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.submitButton.Location = new System.Drawing.Point(972, 21);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(5);
+            this.submitButton.Location = new System.Drawing.Point(969, 34);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(141, 74);
             this.submitButton.TabIndex = 9;
@@ -185,8 +192,8 @@
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.cancelButton.Location = new System.Drawing.Point(1141, 21);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(5);
+            this.cancelButton.Location = new System.Drawing.Point(1138, 34);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(140, 74);
             this.cancelButton.TabIndex = 10;
@@ -194,11 +201,74 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 30);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "文字色";
+            // 
+            // textColorButton
+            // 
+            this.textColorButton.BackColor = System.Drawing.Color.White;
+            this.textColorButton.Location = new System.Drawing.Point(110, 44);
+            this.textColorButton.Name = "textColorButton";
+            this.textColorButton.Size = new System.Drawing.Size(76, 34);
+            this.textColorButton.TabIndex = 12;
+            this.textColorButton.UseVisualStyleBackColor = false;
+            this.textColorButton.Click += new System.EventHandler(this.TextColorButton_Click);
+            // 
+            // backGroundColorButton
+            // 
+            this.backGroundColorButton.BackColor = System.Drawing.Color.Black;
+            this.backGroundColorButton.Location = new System.Drawing.Point(299, 43);
+            this.backGroundColorButton.Name = "backGroundColorButton";
+            this.backGroundColorButton.Size = new System.Drawing.Size(76, 34);
+            this.backGroundColorButton.TabIndex = 14;
+            this.backGroundColorButton.UseVisualStyleBackColor = false;
+            this.backGroundColorButton.Click += new System.EventHandler(this.BackGroundColorButton_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(208, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(85, 30);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "背景色";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.omitHourCheckBox);
+            this.groupBox1.Controls.Add(this.backGroundColorButton);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.textColorButton);
+            this.groupBox1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.groupBox1.Location = new System.Drawing.Point(442, 121);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(836, 100);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "時間表示部";
+            // 
+            // omitHourCheckBox
+            // 
+            this.omitHourCheckBox.AutoSize = true;
+            this.omitHourCheckBox.Location = new System.Drawing.Point(412, 43);
+            this.omitHourCheckBox.Name = "omitHourCheckBox";
+            this.omitHourCheckBox.Size = new System.Drawing.Size(408, 34);
+            this.omitHourCheckBox.TabIndex = 15;
+            this.omitHourCheckBox.Text = "\"時間\" 部分がゼロのときは表示しない";
+            this.omitHourCheckBox.UseVisualStyleBackColor = true;
+            // 
             // ParameterSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1300, 720);
+            this.ClientSize = new System.Drawing.Size(1310, 720);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.overtimeBehaviorGroup);
@@ -209,7 +279,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.hourUpDown);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ParameterSettingForm";
@@ -219,6 +291,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.secondUpDown)).EndInit();
             this.overtimeBehaviorGroup.ResumeLayout(false);
             this.overtimeBehaviorGroup.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +312,12 @@
         private System.Windows.Forms.RadioButton stopRadio;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button textColorButton;
+        private System.Windows.Forms.Button backGroundColorButton;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox omitHourCheckBox;
     }
 }
 

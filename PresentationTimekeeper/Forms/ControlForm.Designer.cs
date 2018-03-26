@@ -36,7 +36,7 @@
             this.hourLabel = new System.Windows.Forms.Label();
             this.minuteLabel = new System.Windows.Forms.Label();
             this.secondLabel = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.signPanel = new System.Windows.Forms.Panel();
             this.timeText = new System.Windows.Forms.Label();
             this.timeTextType = new System.Windows.Forms.Label();
             this.startStopButton = new System.Windows.Forms.Button();
@@ -45,7 +45,7 @@
             this.overtimeBehaviorLabel = new System.Windows.Forms.Label();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.settingButton = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.signPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -125,17 +125,17 @@
             this.secondLabel.TabIndex = 13;
             this.secondLabel.Text = "00";
             // 
-            // panel1
+            // signPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.timeText);
-            this.panel1.Controls.Add(this.timeTextType);
-            this.panel1.Location = new System.Drawing.Point(611, 82);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(668, 405);
-            this.panel1.TabIndex = 14;
+            this.signPanel.BackColor = System.Drawing.Color.Black;
+            this.signPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.signPanel.Controls.Add(this.timeText);
+            this.signPanel.Controls.Add(this.timeTextType);
+            this.signPanel.Location = new System.Drawing.Point(611, 82);
+            this.signPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.signPanel.Name = "signPanel";
+            this.signPanel.Size = new System.Drawing.Size(668, 405);
+            this.signPanel.TabIndex = 14;
             // 
             // timeText
             // 
@@ -165,9 +165,9 @@
             // 
             // startStopButton
             // 
-            this.startStopButton.Font = new System.Drawing.Font("Meiryo UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.startStopButton.Font = new System.Drawing.Font("Meiryo UI", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.startStopButton.Location = new System.Drawing.Point(611, 498);
-            this.startStopButton.Margin = new System.Windows.Forms.Padding(5);
+            this.startStopButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.startStopButton.Name = "startStopButton";
             this.startStopButton.Size = new System.Drawing.Size(452, 107);
             this.startStopButton.TabIndex = 15;
@@ -177,9 +177,9 @@
             // 
             // resetButton
             // 
-            this.resetButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.resetButton.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.resetButton.Location = new System.Drawing.Point(1072, 498);
-            this.resetButton.Margin = new System.Windows.Forms.Padding(5);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(208, 107);
             this.resetButton.TabIndex = 16;
@@ -218,7 +218,7 @@
             // 
             this.settingButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.settingButton.Location = new System.Drawing.Point(1103, 14);
-            this.settingButton.Margin = new System.Windows.Forms.Padding(5);
+            this.settingButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.settingButton.Name = "settingButton";
             this.settingButton.Size = new System.Drawing.Size(177, 53);
             this.settingButton.TabIndex = 19;
@@ -236,7 +236,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.resetButton);
             this.Controls.Add(this.startStopButton);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.signPanel);
             this.Controls.Add(this.secondLabel);
             this.Controls.Add(this.minuteLabel);
             this.Controls.Add(this.hourLabel);
@@ -244,12 +244,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.MaximizeBox = false;
             this.Name = "ControlForm";
             this.Text = "PresentationTimeKeeper";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.signPanel.ResumeLayout(false);
+            this.signPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,7 +265,7 @@
         private System.Windows.Forms.Label hourLabel;
         private System.Windows.Forms.Label minuteLabel;
         private System.Windows.Forms.Label secondLabel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel signPanel;
         private System.Windows.Forms.Button startStopButton;
         private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Label timeText;

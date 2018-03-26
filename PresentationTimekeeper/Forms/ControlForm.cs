@@ -8,10 +8,8 @@ namespace PresentationTimekeeper.Forms
     public partial class ControlForm : Form
     {
         public Setting Setting { get; set; }
-        private int _targetTime;
         private bool _mainTimerIsRunning;
         private int _timeLeft;
-        private bool _doCountUp;
 
         public ControlForm()
         {
@@ -36,7 +34,7 @@ namespace PresentationTimekeeper.Forms
         {
             _timeLeft--;
 
-            if (_timeLeft < 0 && !_doCountUp)
+            if (_timeLeft < 0 && !Setting.DoCountUp)
             {
                 StopTimer();
             }
@@ -54,7 +52,14 @@ namespace PresentationTimekeeper.Forms
 
             var hmsStr = Utility.Second2HmsString(second);
 
-            timeText.Text = $"{hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second}";
+            if(hmsStr.Hour == "00" && Setting.OmitHourDisplay)
+            {
+                timeText.Text = $"{hmsStr.Minute}:{hmsStr.Second}";
+            }
+            else
+            {
+                timeText.Text = $"{hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second}";
+            }
         }
 
         private void StartTimer()
@@ -75,19 +80,20 @@ namespace PresentationTimekeeper.Forms
 
         private void ResetTimer()
         {
-            _timeLeft = _targetTime;
+            _timeLeft = Setting.TargetTime;
             UpdateTimeText(_timeLeft);
         }
 
         public void LoadSetting()
         {
-            _targetTime = Setting.TargetTime;
-            _doCountUp = Setting.DoCountUp;
-            overtimeBehaviorLabel.Text = _doCountUp ? "超過時間表示" : "停止";
-            var hmsStr = Utility.Second2HmsString(_targetTime);
+            overtimeBehaviorLabel.Text = Setting.DoCountUp ? "超過時間表示" : "停止";
+            var hmsStr = Utility.Second2HmsString(Setting.TargetTime);
             hourLabel.Text = hmsStr.Hour;
             minuteLabel.Text = hmsStr.Minute;
             secondLabel.Text = hmsStr.Second;
+            signPanel.BackColor = Setting.BackgroundColor;
+            timeTextType.ForeColor = Setting.TextColor;
+            timeText.ForeColor = Setting.TextColor;
             ResetTimer();
         }
 
