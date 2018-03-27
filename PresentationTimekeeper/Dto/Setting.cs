@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace PresentationTimekeeper.Dto
 {
@@ -9,6 +10,7 @@ namespace PresentationTimekeeper.Dto
         public Color TextColor { get; set; }
         public Color BackgroundColor { get; set; }
         public bool OmitHourDisplay { get; set; }
+        public Dictionary<int, int> RingingTiming { get; set; }
 
         public Setting()
         {
@@ -17,6 +19,7 @@ namespace PresentationTimekeeper.Dto
             TextColor = Color.White;
             BackgroundColor = Color.Black;
             OmitHourDisplay = true;
+            RingingTiming = new Dictionary<int, int>();
         }
     }
 }
