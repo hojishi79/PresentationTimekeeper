@@ -132,7 +132,7 @@
             this.signPanel.Controls.Add(this.timeText);
             this.signPanel.Controls.Add(this.timeTextType);
             this.signPanel.Location = new System.Drawing.Point(611, 82);
-            this.signPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.signPanel.Margin = new System.Windows.Forms.Padding(5);
             this.signPanel.Name = "signPanel";
             this.signPanel.Size = new System.Drawing.Size(668, 405);
             this.signPanel.TabIndex = 14;
@@ -141,12 +141,12 @@
             // 
             this.timeText.AutoSize = true;
             this.timeText.BackColor = System.Drawing.Color.Transparent;
-            this.timeText.Font = new System.Drawing.Font("Meiryo UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.timeText.Font = new System.Drawing.Font("Meiryo UI", 42F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.timeText.ForeColor = System.Drawing.Color.White;
-            this.timeText.Location = new System.Drawing.Point(91, 146);
-            this.timeText.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.timeText.Location = new System.Drawing.Point(45, 130);
+            this.timeText.Margin = new System.Windows.Forms.Padding(0);
             this.timeText.Name = "timeText";
-            this.timeText.Size = new System.Drawing.Size(494, 122);
+            this.timeText.Size = new System.Drawing.Size(576, 143);
             this.timeText.TabIndex = 1;
             this.timeText.Text = "00:00:00";
             // 
@@ -154,12 +154,12 @@
             // 
             this.timeTextType.AutoSize = true;
             this.timeTextType.BackColor = System.Drawing.Color.Transparent;
-            this.timeTextType.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.timeTextType.Font = new System.Drawing.Font("Meiryo UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.timeTextType.ForeColor = System.Drawing.Color.White;
             this.timeTextType.Location = new System.Drawing.Point(28, 32);
             this.timeTextType.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.timeTextType.Name = "timeTextType";
-            this.timeTextType.Size = new System.Drawing.Size(134, 41);
+            this.timeTextType.Size = new System.Drawing.Size(180, 55);
             this.timeTextType.TabIndex = 0;
             this.timeTextType.Text = "残り時間";
             // 
@@ -167,7 +167,7 @@
             // 
             this.startStopButton.Font = new System.Drawing.Font("Meiryo UI", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.startStopButton.Location = new System.Drawing.Point(611, 498);
-            this.startStopButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.startStopButton.Margin = new System.Windows.Forms.Padding(5);
             this.startStopButton.Name = "startStopButton";
             this.startStopButton.Size = new System.Drawing.Size(452, 107);
             this.startStopButton.TabIndex = 15;
@@ -179,7 +179,7 @@
             // 
             this.resetButton.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.resetButton.Location = new System.Drawing.Point(1072, 498);
-            this.resetButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.resetButton.Margin = new System.Windows.Forms.Padding(5);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(208, 107);
             this.resetButton.TabIndex = 16;
@@ -218,7 +218,7 @@
             // 
             this.settingButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.settingButton.Location = new System.Drawing.Point(1103, 14);
-            this.settingButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.settingButton.Margin = new System.Windows.Forms.Padding(5);
             this.settingButton.Name = "settingButton";
             this.settingButton.Size = new System.Drawing.Size(177, 53);
             this.settingButton.TabIndex = 19;
@@ -245,7 +245,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.Name = "ControlForm";
             this.Text = "PresentationTimeKeeper";

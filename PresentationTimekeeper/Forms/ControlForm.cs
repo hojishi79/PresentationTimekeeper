@@ -60,6 +60,20 @@ namespace PresentationTimekeeper.Forms
             {
                 timeText.Text = $"{hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second}";
             }
+
+            ResizeTimeText();
+        }
+
+        private void ResizeTimeText()
+        {
+            var fontName = timeText.Font.Name;
+            var fontSize = Math.Round((double)(signPanel.Width / timeText.Text.Length));
+            timeText.Font = new System.Drawing.Font(fontName, (float)fontSize);
+
+            var x = Math.Round((double)(signPanel.Width - timeText.Width) / 2);
+            var y = Math.Round((double)(signPanel.Height - timeText.Height) / 2);
+
+            timeText.Location = new System.Drawing.Point((int)x, (int)y);
         }
 
         private void StartTimer()
