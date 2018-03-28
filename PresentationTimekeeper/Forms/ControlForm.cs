@@ -7,14 +7,14 @@ namespace PresentationTimekeeper.Forms
 {
     public partial class ControlForm : Form
     {
-        public Setting Setting { get; set; }
+        private Setting _setting;
         private bool _mainTimerIsRunning;
         private int _timeLeft;
 
         public ControlForm()
         {
             InitializeComponent();
-            Setting = new Setting();
+            _setting = new Setting();
             LoadSetting();
         }
 
@@ -34,7 +34,7 @@ namespace PresentationTimekeeper.Forms
         {
             _timeLeft--;
 
-            if (_timeLeft < 0 && !Setting.DoCountUp)
+            if (_timeLeft < 0 && !_setting.DoCountUp)
             {
                 StopTimer();
             }
@@ -52,7 +52,7 @@ namespace PresentationTimekeeper.Forms
 
             var hmsStr = Utility.Second2HmsString(second);
 
-            if(hmsStr.Hour == "00" && Setting.OmitHourDisplay)
+            if(hmsStr.Hour == "00" && _setting.OmitHourDisplay)
             {
                 timeText.Text = $"{hmsStr.Minute}:{hmsStr.Second}";
             }
@@ -94,20 +94,20 @@ namespace PresentationTimekeeper.Forms
 
         private void ResetTimer()
         {
-            _timeLeft = Setting.TargetTime;
+            _timeLeft = _setting.TargetTime;
             UpdateTimeText(_timeLeft);
         }
 
         public void LoadSetting()
         {
-            overtimeBehaviorLabel.Text = Setting.DoCountUp ? "超過時間表示" : "停止";
-            var hmsStr = Utility.Second2HmsString(Setting.TargetTime);
+            overtimeBehaviorLabel.Text = _setting.DoCountUp ? "超過時間表示" : "停止";
+            var hmsStr = Utility.Second2HmsString(_setting.TargetTime);
             hourLabel.Text = hmsStr.Hour;
             minuteLabel.Text = hmsStr.Minute;
             secondLabel.Text = hmsStr.Second;
-            signPanel.BackColor = Setting.BackgroundColor;
-            timeTextType.ForeColor = Setting.TextColor;
-            timeText.ForeColor = Setting.TextColor;
+            signPanel.BackColor = _setting.BackgroundColor;
+            timeTextType.ForeColor = _setting.TextColor;
+            timeText.ForeColor = _setting.TextColor;
             ResetTimer();
         }
 
@@ -118,8 +118,13 @@ namespace PresentationTimekeeper.Forms
 
         private void SettingButton_Click(object sender, EventArgs e)
         {
-            var settingForm = new ParameterSettingForm();
-            settingForm.Show(this);
+            var settingForm = new ParameterSettingForm(_setting);
+            var dialog = settingForm.ShowDialog(this);
+            if(dialog == DialogResult.OK)
+            {
+                LoadSetting();
+            }
+            settingForm.Dispose();
         }
     }
 }

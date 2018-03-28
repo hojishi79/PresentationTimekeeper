@@ -9,15 +9,15 @@ namespace PresentationTimekeeper.Forms
     {
         private Setting _setting;
 
-        public ParameterSettingForm()
+        public ParameterSettingForm(Setting setting)
         {
             InitializeComponent();
+            _setting = setting;
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            _setting = ((ControlForm)Owner).Setting;
             LoadSetting();
         }
 
@@ -41,13 +41,13 @@ namespace PresentationTimekeeper.Forms
             _setting.OmitHourDisplay = omitHourCheckBox.Checked;
             _setting.TextColor = textColorButton.BackColor;
             _setting.BackgroundColor = backGroundColorButton.BackColor;
-            ((ControlForm)Owner).LoadSetting();
-            Dispose();
+            DialogResult = DialogResult.OK;
+            Hide();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            Dispose();
+            Hide();
         }
 
         private void TextColorButton_Click(object sender, EventArgs e)
