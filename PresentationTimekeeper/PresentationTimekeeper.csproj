@@ -48,6 +48,12 @@
     <Compile Include="Dto\HmsInt.cs" />
     <Compile Include="Dto\HmsString.cs" />
     <Compile Include="Dto\Setting.cs" />
+    <Compile Include="Forms\AddBellForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddBellForm.Designer.cs">
+      <DependentUpon>AddBellForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ControlForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
       <DependentUpon>TimeSignForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\Utility.cs" />
+    <EmbeddedResource Include="Forms\AddBellForm.resx">
+      <DependentUpon>AddBellForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>
     </EmbeddedResource>

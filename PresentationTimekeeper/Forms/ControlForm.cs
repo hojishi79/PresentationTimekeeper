@@ -119,8 +119,7 @@ namespace PresentationTimekeeper.Forms
         private void SettingButton_Click(object sender, EventArgs e)
         {
             var settingForm = new ParameterSettingForm(_setting);
-            var dialog = settingForm.ShowDialog(this);
-            if(dialog == DialogResult.OK)
+            if(settingForm.ShowDialog(this) == DialogResult.OK)
             {
                 LoadSetting();
             }

@@ -46,6 +46,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.omitHourCheckBox = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.addBellButton = new System.Windows.Forms.Button();
+            this.addColorChangeButton = new System.Windows.Forms.Button();
+            this.colorChengeListPanel = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.bellChbList = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.hourUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minuteUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondUpDown)).BeginInit();
@@ -68,7 +74,7 @@
             // 
             this.hourUpDown.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.hourUpDown.Location = new System.Drawing.Point(26, 54);
-            this.hourUpDown.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.hourUpDown.Margin = new System.Windows.Forms.Padding(5);
             this.hourUpDown.Maximum = new decimal(new int[] {
             24,
             0,
@@ -93,7 +99,7 @@
             // 
             this.minuteUpDown.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.minuteUpDown.Location = new System.Drawing.Point(224, 54);
-            this.minuteUpDown.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.minuteUpDown.Margin = new System.Windows.Forms.Padding(5);
             this.minuteUpDown.Maximum = new decimal(new int[] {
             59,
             0,
@@ -118,7 +124,7 @@
             // 
             this.secondUpDown.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.secondUpDown.Location = new System.Drawing.Point(401, 54);
-            this.secondUpDown.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.secondUpDown.Margin = new System.Windows.Forms.Padding(5);
             this.secondUpDown.Maximum = new decimal(new int[] {
             59,
             0,
@@ -145,9 +151,9 @@
             this.overtimeBehaviorGroup.Controls.Add(this.stopRadio);
             this.overtimeBehaviorGroup.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.overtimeBehaviorGroup.Location = new System.Drawing.Point(26, 123);
-            this.overtimeBehaviorGroup.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.overtimeBehaviorGroup.Margin = new System.Windows.Forms.Padding(5);
             this.overtimeBehaviorGroup.Name = "overtimeBehaviorGroup";
-            this.overtimeBehaviorGroup.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.overtimeBehaviorGroup.Padding = new System.Windows.Forms.Padding(5);
             this.overtimeBehaviorGroup.Size = new System.Drawing.Size(396, 98);
             this.overtimeBehaviorGroup.TabIndex = 8;
             this.overtimeBehaviorGroup.TabStop = false;
@@ -157,7 +163,7 @@
             // 
             this.countupRadio.AutoSize = true;
             this.countupRadio.Location = new System.Drawing.Point(162, 40);
-            this.countupRadio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.countupRadio.Margin = new System.Windows.Forms.Padding(5);
             this.countupRadio.Name = "countupRadio";
             this.countupRadio.Size = new System.Drawing.Size(188, 34);
             this.countupRadio.TabIndex = 1;
@@ -169,7 +175,7 @@
             this.stopRadio.AutoSize = true;
             this.stopRadio.Checked = true;
             this.stopRadio.Location = new System.Drawing.Point(24, 40);
-            this.stopRadio.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.stopRadio.Margin = new System.Windows.Forms.Padding(5);
             this.stopRadio.Name = "stopRadio";
             this.stopRadio.Size = new System.Drawing.Size(92, 34);
             this.stopRadio.TabIndex = 0;
@@ -181,7 +187,7 @@
             // 
             this.submitButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.submitButton.Location = new System.Drawing.Point(969, 34);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(5);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(141, 74);
             this.submitButton.TabIndex = 9;
@@ -191,9 +197,10 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.cancelButton.Location = new System.Drawing.Point(1138, 34);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(5);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(140, 74);
             this.cancelButton.TabIndex = 10;
@@ -264,11 +271,78 @@
             this.omitHourCheckBox.Text = "\"時間\" 部分がゼロのときは表示しない";
             this.omitHourCheckBox.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label7.Location = new System.Drawing.Point(21, 253);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 30);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "ベル鳴動";
+            // 
+            // addBellButton
+            // 
+            this.addBellButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.addBellButton.Location = new System.Drawing.Point(521, 238);
+            this.addBellButton.Name = "addBellButton";
+            this.addBellButton.Size = new System.Drawing.Size(107, 61);
+            this.addBellButton.TabIndex = 18;
+            this.addBellButton.Text = "追加";
+            this.addBellButton.UseVisualStyleBackColor = true;
+            this.addBellButton.Click += new System.EventHandler(this.AddBellButton_Click);
+            // 
+            // addColorChangeButton
+            // 
+            this.addColorChangeButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.addColorChangeButton.Location = new System.Drawing.Point(1171, 238);
+            this.addColorChangeButton.Name = "addColorChangeButton";
+            this.addColorChangeButton.Size = new System.Drawing.Size(107, 61);
+            this.addColorChangeButton.TabIndex = 21;
+            this.addColorChangeButton.Text = "追加";
+            this.addColorChangeButton.UseVisualStyleBackColor = true;
+            // 
+            // colorChengeListPanel
+            // 
+            this.colorChengeListPanel.AutoScroll = true;
+            this.colorChengeListPanel.Location = new System.Drawing.Point(677, 313);
+            this.colorChengeListPanel.Name = "colorChengeListPanel";
+            this.colorChengeListPanel.Size = new System.Drawing.Size(601, 395);
+            this.colorChengeListPanel.TabIndex = 20;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label8.Location = new System.Drawing.Point(672, 253);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(229, 30);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "文字色／背景色変更";
+            // 
+            // bellChbList
+            // 
+            this.bellChbList.CheckOnClick = true;
+            this.bellChbList.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.bellChbList.FormattingEnabled = true;
+            this.bellChbList.Location = new System.Drawing.Point(26, 313);
+            this.bellChbList.Name = "bellChbList";
+            this.bellChbList.Size = new System.Drawing.Size(602, 400);
+            this.bellChbList.TabIndex = 22;
+            // 
             // ParameterSettingForm
             // 
+            this.AcceptButton = this.submitButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1310, 720);
+            this.CancelButton = this.cancelButton;
+            this.ClientSize = new System.Drawing.Size(1310, 734);
+            this.Controls.Add(this.bellChbList);
+            this.Controls.Add(this.addColorChangeButton);
+            this.Controls.Add(this.colorChengeListPanel);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.addBellButton);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.overtimeBehaviorGroup);
@@ -281,7 +355,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ParameterSettingForm";
@@ -318,6 +393,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox omitHourCheckBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button addBellButton;
+        private System.Windows.Forms.Button addColorChangeButton;
+        private System.Windows.Forms.Panel colorChengeListPanel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckedListBox bellChbList;
     }
 }
 
