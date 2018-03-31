@@ -1,6 +1,7 @@
 ﻿using PresentationTimekeeper.Dto;
 using PresentationTimekeeper.Util;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,41 +9,49 @@ namespace PresentationTimekeeper.Forms
 {
     public partial class ParameterSettingForm : Form
     {
-        private Setting _setting;
+        public Setting Setting;
+        private Setting _tmpSetting;
+        private readonly Dictionary<int, int> _chkbIdxMap;
 
         public ParameterSettingForm(Setting setting)
         {
             InitializeComponent();
-            _setting = setting;
+            Setting = setting;
+            _tmpSetting = Utility.DeepCopy(setting);
+            _chkbIdxMap = new Dictionary<int, int>();
+        }
+
+        private void ParameterSettingForm_Load(object sender, EventArgs e)
+        {
+            bellChbList.SelectedIndexChanged += BellChbList_SelectedIndexChanged;
         }
 
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
             LoadSetting();
-            WriteBellChbList();
         }
 
         private void LoadSetting()
         {
-            var hmsInt = Utility.Second2HmsInt(_setting.TargetTime);
+            var hmsInt = Utility.Second2HmsInt(Setting.TargetTime);
             hourUpDown.Value = hmsInt.Hour;
             minuteUpDown.Value = hmsInt.Minute;
             secondUpDown.Value = hmsInt.Second;
-            countupRadio.Checked = _setting.DoCountUp;
-            stopRadio.Checked = !_setting.DoCountUp;
-            omitHourCheckBox.Checked = _setting.OmitHourDisplay;
-            textColorButton.BackColor = _setting.TextColor;
-            backGroundColorButton.BackColor = _setting.BackgroundColor;
+            countupRadio.Checked = Setting.DoCountUp;
+            stopRadio.Checked = !Setting.DoCountUp;
+            omitHourCheckBox.Checked = Setting.OmitHourDisplay;
+            textColorButton.BackColor = Setting.TextColor;
+            backGroundColorButton.BackColor = Setting.BackgroundColor;
+            WriteBellChbList();
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            _setting.TargetTime = Utility.ConvertHms2Sec((int)hourUpDown.Value, (int)minuteUpDown.Value, (int)secondUpDown.Value);
-            _setting.DoCountUp = countupRadio.Checked;
-            _setting.OmitHourDisplay = omitHourCheckBox.Checked;
-            _setting.TextColor = textColorButton.BackColor;
-            _setting.BackgroundColor = backGroundColorButton.BackColor;
+            _tmpSetting.TargetTime = Utility.ConvertHms2Sec((int)hourUpDown.Value, (int)minuteUpDown.Value, (int)secondUpDown.Value);
+            _tmpSetting.DoCountUp = countupRadio.Checked;
+            _tmpSetting.OmitHourDisplay = omitHourCheckBox.Checked;
+            Setting = _tmpSetting;
             DialogResult = DialogResult.OK;
             Hide();
         }
@@ -62,7 +71,7 @@ namespace PresentationTimekeeper.Forms
             if(cd.ShowDialog() == DialogResult.OK)
             {
                 textColorButton.BackColor = cd.Color;
-                _setting.TextColor = cd.Color;
+                _tmpSetting.TextColor = cd.Color;
             }
         }
 
@@ -76,7 +85,7 @@ namespace PresentationTimekeeper.Forms
             if (cd.ShowDialog() == DialogResult.OK)
             {
                 backGroundColorButton.BackColor = cd.Color;
-                _setting.BackgroundColor = cd.Color;
+                _tmpSetting.BackgroundColor = cd.Color;
             }
         }
 
@@ -85,7 +94,7 @@ namespace PresentationTimekeeper.Forms
             var form = new AddBellForm();
             if(form.ShowDialog() == DialogResult.OK)
             {
-                _setting.RingingTiming[form.RingingTiming] = form.BellCount;
+                _tmpSetting.RingingTiming[form.RingingTiming] = form.BellCount;
                 WriteBellChbList();                
             }
             form.Dispose();
@@ -94,12 +103,32 @@ namespace PresentationTimekeeper.Forms
         private void WriteBellChbList()
         {
             bellChbList.Items.Clear();
-            foreach (var pair in _setting.RingingTiming.OrderByDescending(x => x.Key))
+            _chkbIdxMap.Clear();
+            foreach (var pair in _tmpSetting.RingingTiming.OrderByDescending(x => x.Key))
             {
                 var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
                 var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
-                bellChbList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} {pair.Value}回");
+                var idx = bellChbList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} {pair.Value}回");
+                _chkbIdxMap.Add(idx, pair.Key);
             }
+        }
+
+        private void BellChbList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            delBellButton.Enabled = bellChbList.CheckedItems.Count > 0;
+        }
+
+        private void DelBellButton_Click(object sender, EventArgs e)
+        {
+            for(var idx = 0; idx < bellChbList.Items.Count; idx++)
+            {
+                if (bellChbList.GetItemChecked(idx))
+                {
+                    var ringingTiming = _chkbIdxMap[idx];
+                    _tmpSetting.RingingTiming.Remove(ringingTiming);
+                }
+            }
+            WriteBellChbList();
         }
     }
 }

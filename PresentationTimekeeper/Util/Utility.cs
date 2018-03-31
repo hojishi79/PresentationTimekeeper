@@ -1,4 +1,6 @@
 ﻿using PresentationTimekeeper.Dto;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PresentationTimekeeper.Util
 {
@@ -34,6 +36,26 @@ namespace PresentationTimekeeper.Util
                 Minute = SubstringFromRight($"0{hmsInt.Minute}", 2),
                 Second = SubstringFromRight($"0{hmsInt.Second}", 2)
             };
+        }
+
+        public static T DeepCopy<T>(T target)
+        {
+            T result;
+            var b = new BinaryFormatter();
+            var mem = new MemoryStream();
+
+            try
+            {
+                b.Serialize(mem, target);
+                mem.Position = 0;
+                result = (T)b.Deserialize(mem);
+            }
+            finally
+            {
+                mem.Close();
+            }
+
+            return result;
         }
     }
 }

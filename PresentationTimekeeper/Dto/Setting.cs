@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace PresentationTimekeeper.Dto
 {
+    [Serializable]
     public class Setting
     {
         public int TargetTime { get; set; }

@@ -52,6 +52,7 @@
             this.colorChengeListPanel = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.bellChbList = new System.Windows.Forms.CheckedListBox();
+            this.delBellButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.hourUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minuteUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondUpDown)).BeginInit();
@@ -284,7 +285,7 @@
             // addBellButton
             // 
             this.addBellButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.addBellButton.Location = new System.Drawing.Point(521, 238);
+            this.addBellButton.Location = new System.Drawing.Point(401, 238);
             this.addBellButton.Name = "addBellButton";
             this.addBellButton.Size = new System.Drawing.Size(107, 61);
             this.addBellButton.TabIndex = 18;
@@ -330,6 +331,18 @@
             this.bellChbList.Size = new System.Drawing.Size(602, 400);
             this.bellChbList.TabIndex = 22;
             // 
+            // delBellButton
+            // 
+            this.delBellButton.Enabled = false;
+            this.delBellButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.delBellButton.Location = new System.Drawing.Point(521, 238);
+            this.delBellButton.Name = "delBellButton";
+            this.delBellButton.Size = new System.Drawing.Size(107, 61);
+            this.delBellButton.TabIndex = 23;
+            this.delBellButton.Text = "削除";
+            this.delBellButton.UseVisualStyleBackColor = true;
+            this.delBellButton.Click += new System.EventHandler(this.DelBellButton_Click);
+            // 
             // ParameterSettingForm
             // 
             this.AcceptButton = this.submitButton;
@@ -337,6 +350,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(1310, 734);
+            this.Controls.Add(this.delBellButton);
             this.Controls.Add(this.bellChbList);
             this.Controls.Add(this.addColorChangeButton);
             this.Controls.Add(this.colorChengeListPanel);
@@ -361,6 +375,7 @@
             this.MinimizeBox = false;
             this.Name = "ParameterSettingForm";
             this.Text = "設定 | PresentationTimekeeper";
+            this.Load += new System.EventHandler(this.ParameterSettingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.hourUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minuteUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.secondUpDown)).EndInit();
@@ -399,6 +414,7 @@
         private System.Windows.Forms.Panel colorChengeListPanel;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckedListBox bellChbList;
+        private System.Windows.Forms.Button delBellButton;
     }
 }
 

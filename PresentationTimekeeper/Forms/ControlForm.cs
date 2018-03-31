@@ -124,6 +124,7 @@ namespace PresentationTimekeeper.Forms
             var settingForm = new ParameterSettingForm(_setting);
             if(settingForm.ShowDialog(this) == DialogResult.OK)
             {
+                _setting = settingForm.Setting;
                 LoadSetting();
             }
             settingForm.Dispose();
