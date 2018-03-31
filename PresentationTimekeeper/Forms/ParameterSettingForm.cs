@@ -20,6 +20,7 @@ namespace PresentationTimekeeper.Forms
         {
             base.OnShown(e);
             LoadSetting();
+            WriteBellChbList();
         }
 
         private void LoadSetting()
@@ -84,17 +85,21 @@ namespace PresentationTimekeeper.Forms
             var form = new AddBellForm();
             if(form.ShowDialog() == DialogResult.OK)
             {
-               _setting.RingingTiming[form.RingingTiming] = form.BellCount;
-
-                bellChbList.Items.Clear();
-                foreach(var pair in _setting.RingingTiming.OrderByDescending(x => x.Key))
-                {
-                    var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
-                    var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
-                    bellChbList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} {pair.Value}回");
-                }
+                _setting.RingingTiming[form.RingingTiming] = form.BellCount;
+                WriteBellChbList();                
             }
             form.Dispose();
+        }
+
+        private void WriteBellChbList()
+        {
+            bellChbList.Items.Clear();
+            foreach (var pair in _setting.RingingTiming.OrderByDescending(x => x.Key))
+            {
+                var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
+                var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
+                bellChbList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} {pair.Value}回");
+            }
         }
     }
 }

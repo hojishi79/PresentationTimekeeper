@@ -1,6 +1,8 @@
 ﻿using PresentationTimekeeper.Dto;
 using PresentationTimekeeper.Util;
 using System;
+using System.IO;
+using System.Media;
 using System.Windows.Forms;
 
 namespace PresentationTimekeeper.Forms
@@ -42,6 +44,7 @@ namespace PresentationTimekeeper.Forms
             {
                 UpdateTimeText(_timeLeft);
             }
+            RingBell();
         }
 
         private void UpdateTimeText(int second)
@@ -124,6 +127,35 @@ namespace PresentationTimekeeper.Forms
                 LoadSetting();
             }
             settingForm.Dispose();
+        }
+
+        private void RingBell()
+        {
+            var isRingtime = _setting.RingingTiming.TryGetValue(_timeLeft, out int count);
+            if (!isRingtime)
+            {
+                return;
+            }
+
+            UnmanagedMemoryStream stream;
+            switch (count)
+            {
+                case 3:
+                    stream = Properties.Resources.ringing_bell_3;
+                    break;
+                case 2:
+                    stream = Properties.Resources.ringing_bell_2;
+                    break;
+                case 1:
+                default:
+                    stream = Properties.Resources.ringing_bell_1;
+                    break;
+            }
+
+            using (var player = new SoundPlayer(stream))
+            {
+                player.Play();
+            }
         }
     }
 }

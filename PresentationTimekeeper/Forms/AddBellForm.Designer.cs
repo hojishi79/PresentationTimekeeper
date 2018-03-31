@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.overTimeRadio = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.hourUpDown = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,6 +60,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "時間種別";
             // 
+            // overTimeRadio
+            // 
+            this.overTimeRadio.AutoSize = true;
+            this.overTimeRadio.Location = new System.Drawing.Point(177, 37);
+            this.overTimeRadio.Name = "overTimeRadio";
+            this.overTimeRadio.Size = new System.Drawing.Size(140, 34);
+            this.overTimeRadio.TabIndex = 1;
+            this.overTimeRadio.Text = "超過時間";
+            this.overTimeRadio.UseVisualStyleBackColor = true;
+            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
@@ -71,16 +81,6 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "残り時間";
             this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // overTimeRadio
-            // 
-            this.overTimeRadio.AutoSize = true;
-            this.overTimeRadio.Location = new System.Drawing.Point(177, 37);
-            this.overTimeRadio.Name = "overTimeRadio";
-            this.overTimeRadio.Size = new System.Drawing.Size(140, 34);
-            this.overTimeRadio.TabIndex = 1;
-            this.overTimeRadio.Text = "超過時間";
-            this.overTimeRadio.UseVisualStyleBackColor = true;
             // 
             // hourUpDown
             // 
@@ -229,6 +229,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddBellForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ベル鳴動追加";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
