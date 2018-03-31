@@ -2,6 +2,7 @@
 using PresentationTimekeeper.Util;
 using System;
 using System.IO;
+using System.Linq;
 using System.Media;
 using System.Windows.Forms;
 
@@ -112,6 +113,7 @@ namespace PresentationTimekeeper.Forms
             timeTextType.ForeColor = _setting.TextColor;
             timeText.ForeColor = _setting.TextColor;
             ResetTimer();
+            WriteBellChbList();
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
@@ -156,6 +158,17 @@ namespace PresentationTimekeeper.Forms
             using (var player = new SoundPlayer(stream))
             {
                 player.Play();
+            }
+        }
+
+        private void WriteBellChbList()
+        {
+            bellList.Items.Clear();
+            foreach (var pair in _setting.RingingTiming.OrderByDescending(x => x.Key))
+            {
+                var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
+                var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
+                bellList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} {pair.Value}回");
             }
         }
     }

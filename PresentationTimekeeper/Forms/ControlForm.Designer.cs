@@ -45,6 +45,8 @@
             this.overtimeBehaviorLabel = new System.Windows.Forms.Label();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.settingButton = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.bellList = new System.Windows.Forms.ListBox();
             this.signPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -226,11 +228,35 @@
             this.settingButton.UseVisualStyleBackColor = true;
             this.settingButton.Click += new System.EventHandler(this.SettingButton_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label6.Location = new System.Drawing.Point(20, 195);
+            this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 30);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "ベル鳴動";
+            // 
+            // bellList
+            // 
+            this.bellList.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.bellList.FormattingEnabled = true;
+            this.bellList.ItemHeight = 30;
+            this.bellList.Location = new System.Drawing.Point(61, 228);
+            this.bellList.Name = "bellList";
+            this.bellList.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.bellList.Size = new System.Drawing.Size(490, 214);
+            this.bellList.TabIndex = 21;
+            // 
             // ControlForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 720);
+            this.Controls.Add(this.bellList);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.settingButton);
             this.Controls.Add(this.overtimeBehaviorLabel);
             this.Controls.Add(this.label1);
@@ -274,5 +300,7 @@
         private System.Windows.Forms.Label overtimeBehaviorLabel;
         private System.Windows.Forms.Timer mainTimer;
         private System.Windows.Forms.Button settingButton;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListBox bellList;
     }
 }

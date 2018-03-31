@@ -1,6 +1,8 @@
-﻿using PresentationTimekeeper.Dto;
+﻿using System.Drawing;
+using PresentationTimekeeper.Dto;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace PresentationTimekeeper.Util
 {
@@ -56,6 +58,26 @@ namespace PresentationTimekeeper.Util
             }
 
             return result;
+        }
+
+
+        public static Color ChangeColor(Color preColor)
+        {
+            var cd = new ColorDialog
+            {
+                AllowFullOpen = false,
+                AnyColor = false,
+                FullOpen = false,
+                SolidColorOnly = true,
+                Color = preColor
+            };
+
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                return cd.Color;
+            }
+
+            return preColor;
         }
     }
 }
