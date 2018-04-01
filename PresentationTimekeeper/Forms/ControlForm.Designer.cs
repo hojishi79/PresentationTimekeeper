@@ -135,7 +135,7 @@
             this.signPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.signPanel.Controls.Add(this.timeText);
             this.signPanel.Controls.Add(this.timeTextType);
-            this.signPanel.Location = new System.Drawing.Point(611, 82);
+            this.signPanel.Location = new System.Drawing.Point(612, 113);
             this.signPanel.Margin = new System.Windows.Forms.Padding(5);
             this.signPanel.Name = "signPanel";
             this.signPanel.Size = new System.Drawing.Size(668, 405);
@@ -170,10 +170,10 @@
             // startStopButton
             // 
             this.startStopButton.Font = new System.Drawing.Font("Meiryo UI", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.startStopButton.Location = new System.Drawing.Point(611, 498);
+            this.startStopButton.Location = new System.Drawing.Point(612, 571);
             this.startStopButton.Margin = new System.Windows.Forms.Padding(5);
             this.startStopButton.Name = "startStopButton";
-            this.startStopButton.Size = new System.Drawing.Size(452, 107);
+            this.startStopButton.Size = new System.Drawing.Size(426, 107);
             this.startStopButton.TabIndex = 15;
             this.startStopButton.Text = "スタート";
             this.startStopButton.UseVisualStyleBackColor = true;
@@ -182,7 +182,7 @@
             // resetButton
             // 
             this.resetButton.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.resetButton.Location = new System.Drawing.Point(1072, 498);
+            this.resetButton.Location = new System.Drawing.Point(1073, 571);
             this.resetButton.Margin = new System.Windows.Forms.Padding(5);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(208, 107);
@@ -221,7 +221,7 @@
             // settingButton
             // 
             this.settingButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.settingButton.Location = new System.Drawing.Point(1103, 14);
+            this.settingButton.Location = new System.Drawing.Point(1103, 35);
             this.settingButton.Margin = new System.Windows.Forms.Padding(5);
             this.settingButton.Name = "settingButton";
             this.settingButton.Size = new System.Drawing.Size(177, 53);
