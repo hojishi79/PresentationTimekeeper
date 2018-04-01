@@ -47,6 +47,8 @@
             this.settingButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.bellList = new System.Windows.Forms.ListBox();
+            this.changeColorList = new System.Windows.Forms.ListBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.signPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label4.Location = new System.Drawing.Point(382, 58);
+            this.label4.Location = new System.Drawing.Point(359, 58);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 30);
@@ -65,7 +67,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(265, 58);
+            this.label3.Location = new System.Drawing.Point(242, 58);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 30);
@@ -76,7 +78,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(124, 58);
+            this.label2.Location = new System.Drawing.Point(101, 58);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 30);
@@ -98,7 +100,7 @@
             // 
             this.hourLabel.AutoSize = true;
             this.hourLabel.Font = new System.Drawing.Font("Meiryo UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.hourLabel.Location = new System.Drawing.Point(52, 45);
+            this.hourLabel.Location = new System.Drawing.Point(29, 45);
             this.hourLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.hourLabel.Name = "hourLabel";
             this.hourLabel.Size = new System.Drawing.Size(72, 50);
@@ -109,7 +111,7 @@
             // 
             this.minuteLabel.AutoSize = true;
             this.minuteLabel.Font = new System.Drawing.Font("Meiryo UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.minuteLabel.Location = new System.Drawing.Point(193, 45);
+            this.minuteLabel.Location = new System.Drawing.Point(170, 45);
             this.minuteLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.minuteLabel.Name = "minuteLabel";
             this.minuteLabel.Size = new System.Drawing.Size(72, 50);
@@ -120,7 +122,7 @@
             // 
             this.secondLabel.AutoSize = true;
             this.secondLabel.Font = new System.Drawing.Font("Meiryo UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.secondLabel.Location = new System.Drawing.Point(310, 45);
+            this.secondLabel.Location = new System.Drawing.Point(287, 45);
             this.secondLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.secondLabel.Name = "secondLabel";
             this.secondLabel.Size = new System.Drawing.Size(72, 50);
@@ -204,7 +206,7 @@
             // 
             this.overtimeBehaviorLabel.AutoSize = true;
             this.overtimeBehaviorLabel.Font = new System.Drawing.Font("Meiryo UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.overtimeBehaviorLabel.Location = new System.Drawing.Point(54, 141);
+            this.overtimeBehaviorLabel.Location = new System.Drawing.Point(31, 142);
             this.overtimeBehaviorLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.overtimeBehaviorLabel.Name = "overtimeBehaviorLabel";
             this.overtimeBehaviorLabel.Size = new System.Drawing.Size(82, 41);
@@ -243,18 +245,44 @@
             // 
             this.bellList.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.bellList.FormattingEnabled = true;
+            this.bellList.HorizontalScrollbar = true;
             this.bellList.ItemHeight = 30;
-            this.bellList.Location = new System.Drawing.Point(61, 228);
+            this.bellList.Location = new System.Drawing.Point(38, 228);
             this.bellList.Name = "bellList";
             this.bellList.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.bellList.Size = new System.Drawing.Size(490, 214);
+            this.bellList.Size = new System.Drawing.Size(544, 214);
             this.bellList.TabIndex = 21;
+            // 
+            // changeColorList
+            // 
+            this.changeColorList.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.changeColorList.FormattingEnabled = true;
+            this.changeColorList.HorizontalScrollbar = true;
+            this.changeColorList.ItemHeight = 30;
+            this.changeColorList.Location = new System.Drawing.Point(38, 489);
+            this.changeColorList.Name = "changeColorList";
+            this.changeColorList.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.changeColorList.Size = new System.Drawing.Size(544, 214);
+            this.changeColorList.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label7.Location = new System.Drawing.Point(20, 456);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(229, 30);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "文字色／背景色変更";
             // 
             // ControlForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 720);
+            this.Controls.Add(this.changeColorList);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.bellList);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.settingButton);
@@ -302,5 +330,7 @@
         private System.Windows.Forms.Button settingButton;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox bellList;
+        private System.Windows.Forms.ListBox changeColorList;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -44,8 +44,9 @@ namespace PresentationTimekeeper.Forms
             else
             {
                 UpdateTimeText(_timeLeft);
+                RingBell();
+                ChangeColor();
             }
-            RingBell();
         }
 
         private void UpdateTimeText(int second)
@@ -109,11 +110,12 @@ namespace PresentationTimekeeper.Forms
             hourLabel.Text = hmsStr.Hour;
             minuteLabel.Text = hmsStr.Minute;
             secondLabel.Text = hmsStr.Second;
-            signPanel.BackColor = _setting.BackgroundColor;
-            timeTextType.ForeColor = _setting.TextColor;
-            timeText.ForeColor = _setting.TextColor;
+            signPanel.BackColor = _setting.DefaultColor.BackGround;
+            timeTextType.ForeColor = _setting.DefaultColor.Text;
+            timeText.ForeColor = _setting.DefaultColor.Text;
             ResetTimer();
             WriteBellChbList();
+            WriteChangeColorChbList();
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
@@ -134,7 +136,7 @@ namespace PresentationTimekeeper.Forms
 
         private void RingBell()
         {
-            var isRingtime = _setting.RingingTiming.TryGetValue(_timeLeft, out int count);
+            var isRingtime = _setting.RingTiming.TryGetValue(_timeLeft, out var count);
             if (!isRingtime)
             {
                 return;
@@ -161,14 +163,37 @@ namespace PresentationTimekeeper.Forms
             }
         }
 
+        private void ChangeColor()
+        {
+            var isChangeColorTiming = _setting.ChangeColorTiming.TryGetValue(_timeLeft, out var color);
+            if (!isChangeColorTiming)
+            {
+                return;
+            }
+            signPanel.BackColor = color.BackGround;
+            timeTextType.ForeColor = color.Text;
+            timeText.ForeColor = color.Text;
+        }
+
         private void WriteBellChbList()
         {
             bellList.Items.Clear();
-            foreach (var pair in _setting.RingingTiming.OrderByDescending(x => x.Key))
+            foreach (var pair in _setting.RingTiming.OrderByDescending(x => x.Key))
             {
                 var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
                 var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
                 bellList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} {pair.Value}回");
+            }
+        }
+
+        private void WriteChangeColorChbList()
+        {
+            changeColorList.Items.Clear();
+            foreach (var pair in _setting.ChangeColorTiming.OrderByDescending(x => x.Key))
+            {
+                var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
+                var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
+                changeColorList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} 文字色={pair.Value.Text.Name} 背景色={pair.Value.BackGround.Name}");
             }
         }
     }

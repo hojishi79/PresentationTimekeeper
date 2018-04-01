@@ -5,8 +5,8 @@ namespace PresentationTimekeeper.Forms
 {
     public partial class AddBellForm : Form
     {
-        public int RingingTiming;
-        public int BellCount;
+        public int Timing;
+        public int Count;
 
         public AddBellForm()
         {
@@ -15,9 +15,9 @@ namespace PresentationTimekeeper.Forms
 
         private void AddButton_Click(object sender, System.EventArgs e)
         {
-            var ringingTiming = Utility.ConvertHms2Sec((int)hourUpDown.Value, (int)minuteUpDown.Value, (int)secondUpDown.Value);
-            RingingTiming = overTimeRadio.Checked ? -1 * ringingTiming : ringingTiming;
-            BellCount = (int)bellCountUpDown.Value;
+            var timing = Utility.ConvertHms2Sec((int)hourUpDown.Value, (int)minuteUpDown.Value, (int)secondUpDown.Value);
+            Timing = overTimeRadio.Checked ? -1 * timing : timing;
+            Count = (int)bellCountUpDown.Value;
             DialogResult = DialogResult.OK;
             Hide();
         }

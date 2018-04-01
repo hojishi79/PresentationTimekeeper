@@ -48,11 +48,18 @@
     <Compile Include="Dto\HmsInt.cs" />
     <Compile Include="Dto\HmsString.cs" />
     <Compile Include="Dto\Setting.cs" />
+    <Compile Include="Dto\TextBgColor.cs" />
     <Compile Include="Forms\AddBellForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AddBellForm.Designer.cs">
       <DependentUpon>AddBellForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddChangeColorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddChangeColorForm.Designer.cs">
+      <DependentUpon>AddChangeColorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ControlForm.cs">
       <SubType>Form</SubType>
@@ -77,6 +84,9 @@
     <Compile Include="Util\Utility.cs" />
     <EmbeddedResource Include="Forms\AddBellForm.resx">
       <DependentUpon>AddBellForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddChangeColorForm.resx">
+      <DependentUpon>AddChangeColorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ControlForm.resx">
       <DependentUpon>ControlForm.cs</DependentUpon>

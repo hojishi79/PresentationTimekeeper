@@ -10,20 +10,23 @@ namespace PresentationTimekeeper.Forms
     public partial class ParameterSettingForm : Form
     {
         public Setting Setting;
-        private Setting _tmpSetting;
-        private readonly Dictionary<int, int> _chkbIdxMap;
+        private readonly Setting _tmpSetting;
+        private readonly Dictionary<int, int> _bellChkbIdxMap;
+        private readonly Dictionary<int, int> _chColChkIdxMap;
 
         public ParameterSettingForm(Setting setting)
         {
             InitializeComponent();
             Setting = setting;
             _tmpSetting = Utility.DeepCopy(setting);
-            _chkbIdxMap = new Dictionary<int, int>();
+            _bellChkbIdxMap = new Dictionary<int, int>();
+            _chColChkIdxMap = new Dictionary<int, int>();
         }
 
         private void ParameterSettingForm_Load(object sender, EventArgs e)
         {
             bellChbList.SelectedIndexChanged += BellChbList_SelectedIndexChanged;
+            colorChangeChbList.SelectedIndexChanged += ColorChangeChbList_SelectedIndexChanged;
         }
 
         protected override void OnShown(EventArgs e)
@@ -41,9 +44,10 @@ namespace PresentationTimekeeper.Forms
             countupRadio.Checked = Setting.DoCountUp;
             stopRadio.Checked = !Setting.DoCountUp;
             omitHourCheckBox.Checked = Setting.OmitHourDisplay;
-            textColorButton.BackColor = Setting.TextColor;
-            backGroundColorButton.BackColor = Setting.BackgroundColor;
+            textColorButton.BackColor = Setting.DefaultColor.Text;
+            backGroundColorButton.BackColor = Setting.DefaultColor.BackGround;
             WriteBellChbList();
+            WriteChangeColorChbList();
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -63,30 +67,16 @@ namespace PresentationTimekeeper.Forms
 
         private void TextColorButton_Click(object sender, EventArgs e)
         {
-            var cd = new ColorDialog
-            {
-                Color = textColorButton.BackColor
-            };
-
-            if(cd.ShowDialog() == DialogResult.OK)
-            {
-                textColorButton.BackColor = cd.Color;
-                _tmpSetting.TextColor = cd.Color;
-            }
+            var color = Utility.ChangeColor(textColorButton.BackColor);
+            textColorButton.BackColor = color;
+            _tmpSetting.DefaultColor.Text = color;
         }
 
         private void BackGroundColorButton_Click(object sender, EventArgs e)
         {
-            var cd = new ColorDialog
-            {
-                Color = backGroundColorButton.BackColor
-            };
-
-            if (cd.ShowDialog() == DialogResult.OK)
-            {
-                backGroundColorButton.BackColor = cd.Color;
-                _tmpSetting.BackgroundColor = cd.Color;
-            }
+            var color = Utility.ChangeColor(backGroundColorButton.BackColor);
+            backGroundColorButton.BackColor = color;
+            _tmpSetting.DefaultColor.BackGround = color;
         }
 
         private void AddBellButton_Click(object sender, EventArgs e)
@@ -94,7 +84,7 @@ namespace PresentationTimekeeper.Forms
             var form = new AddBellForm();
             if(form.ShowDialog() == DialogResult.OK)
             {
-                _tmpSetting.RingingTiming[form.RingingTiming] = form.BellCount;
+                _tmpSetting.RingTiming[form.Timing] = form.Count;
                 WriteBellChbList();                
             }
             form.Dispose();
@@ -103,13 +93,13 @@ namespace PresentationTimekeeper.Forms
         private void WriteBellChbList()
         {
             bellChbList.Items.Clear();
-            _chkbIdxMap.Clear();
-            foreach (var pair in _tmpSetting.RingingTiming.OrderByDescending(x => x.Key))
+            _bellChkbIdxMap.Clear();
+            foreach (var pair in _tmpSetting.RingTiming.OrderByDescending(x => x.Key))
             {
                 var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
                 var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
                 var idx = bellChbList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} {pair.Value}回");
-                _chkbIdxMap.Add(idx, pair.Key);
+                _bellChkbIdxMap.Add(idx, pair.Key);
             }
         }
 
@@ -124,11 +114,53 @@ namespace PresentationTimekeeper.Forms
             {
                 if (bellChbList.GetItemChecked(idx))
                 {
-                    var ringingTiming = _chkbIdxMap[idx];
-                    _tmpSetting.RingingTiming.Remove(ringingTiming);
+                    var ringingTiming = _bellChkbIdxMap[idx];
+                    _tmpSetting.RingTiming.Remove(ringingTiming);
                 }
             }
             WriteBellChbList();
+        }
+
+        private void AddColorChangeButton_Click(object sender, EventArgs e)
+        {
+            var form = new AddChangeColorForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _tmpSetting.ChangeColorTiming[form.Timing] = form.TextBgColor;
+                WriteChangeColorChbList();
+            }
+            form.Dispose();
+        }
+
+        private void WriteChangeColorChbList()
+        {
+            colorChangeChbList.Items.Clear();
+            _chColChkIdxMap.Clear();
+            foreach (var pair in _tmpSetting.ChangeColorTiming.OrderByDescending(x => x.Key))
+            {
+                var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
+                var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
+                var idx = colorChangeChbList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} 文字色={pair.Value.Text.Name} 背景色={pair.Value.BackGround.Name}");
+                _chColChkIdxMap.Add(idx, pair.Key);
+            }
+        }
+
+        private void ColorChangeChbList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            delColorChangeButton.Enabled = colorChangeChbList.CheckedItems.Count > 0;
+        }
+
+        private void DelColorChangeButton_Click(object sender, EventArgs e)
+        {
+            for (var idx = 0; idx < colorChangeChbList.Items.Count; idx++)
+            {
+                if (colorChangeChbList.GetItemChecked(idx))
+                {
+                    var timing = _chColChkIdxMap[idx];
+                    _tmpSetting.ChangeColorTiming.Remove(timing);
+                }
+            }
+            WriteChangeColorChbList();
         }
     }
 }

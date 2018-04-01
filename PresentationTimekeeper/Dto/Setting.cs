@@ -9,19 +9,23 @@ namespace PresentationTimekeeper.Dto
     {
         public int TargetTime { get; set; }
         public bool DoCountUp { get; set; }
-        public Color TextColor { get; set; }
-        public Color BackgroundColor { get; set; }
+        public TextBgColor DefaultColor { get; set; }
         public bool OmitHourDisplay { get; set; }
-        public Dictionary<int, int> RingingTiming { get; set; }
+        public Dictionary<int, int> RingTiming { get; set; }
+        public Dictionary<int, TextBgColor> ChangeColorTiming { get; set; }
 
         public Setting()
         {
             TargetTime = 180;
             DoCountUp = true;
-            TextColor = Color.White;
-            BackgroundColor = Color.Black;
+            DefaultColor = new TextBgColor
+            {
+                Text = Color.White,
+                BackGround = Color.Black
+            };
             OmitHourDisplay = true;
-            RingingTiming = new Dictionary<int, int>();
+            RingTiming = new Dictionary<int, int>();
+            ChangeColorTiming = new Dictionary<int, TextBgColor>();
         }
     }
 }
