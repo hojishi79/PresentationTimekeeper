@@ -13,6 +13,7 @@ namespace PresentationTimekeeper.Forms
         private Setting _setting;
         private bool _mainTimerIsRunning;
         private int _timeLeft;
+        private TimeSignForm _timeSignForm;
 
         public ControlForm()
         {
@@ -45,7 +46,15 @@ namespace PresentationTimekeeper.Forms
             {
                 UpdateTimeText(_timeLeft);
                 RingBell();
-                ChangeColor();
+                var colorOrder = GetChangeColorOrder(_timeLeft);
+                if (colorOrder != null)
+                {
+                    ChangeColor(colorOrder);
+                }
+                if (_timeSignForm != null && _timeSignForm.Visible)
+                {
+                    MirrorTimeSignForm(_timeLeft, _setting.OmitHourDisplay, colorOrder);
+                }
             }
         }
 
@@ -53,7 +62,7 @@ namespace PresentationTimekeeper.Forms
         {
             timeTextType.Text = second < 0 ? "超過時間" : "残り時間";
 
-            second = second < 0 ? second * -1 : second;
+            second = Math.Abs(second);
 
             var hmsStr = Utility.Second2HmsString(second);
 
@@ -101,6 +110,7 @@ namespace PresentationTimekeeper.Forms
         {
             _timeLeft = _setting.TargetTime;
             UpdateTimeText(_timeLeft);
+            ChangeColor(_setting.DefaultColor);
         }
 
         public void LoadSetting()
@@ -163,10 +173,15 @@ namespace PresentationTimekeeper.Forms
             }
         }
 
-        private void ChangeColor()
+        private TextBgColor GetChangeColorOrder(int seond)
         {
-            var isChangeColorTiming = _setting.ChangeColorTiming.TryGetValue(_timeLeft, out var color);
-            if (!isChangeColorTiming)
+            var isChangeColorTiming = _setting.ChangeColorTiming.TryGetValue(seond, out var color);
+            return isChangeColorTiming ? color : null;
+        }
+
+        private void ChangeColor(TextBgColor color)
+        {
+            if (color == null)
             {
                 return;
             }
@@ -212,6 +227,25 @@ namespace PresentationTimekeeper.Forms
             {
                 changeColorList.Enabled = false;
                 changeColorList.Items.Add("（なし）");
+            }
+        }
+
+        private void OpenSignWindowButton_Click(object sender, EventArgs e)
+        {
+            if (_timeSignForm == null || _timeSignForm.IsDisposed)
+            {
+                _timeSignForm = new TimeSignForm();
+                _timeSignForm.Show();
+                MirrorTimeSignForm(_timeLeft, _setting.OmitHourDisplay, null);
+            }
+        }
+
+        private void MirrorTimeSignForm(int seond, bool omitHourDisplay, TextBgColor colorOrder)
+        {
+            _timeSignForm.UpdateTimeText(seond, omitHourDisplay);
+            if (colorOrder != null)
+            {
+                _timeSignForm.ChangeColor(colorOrder);
             }
         }
     }

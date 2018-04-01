@@ -49,6 +49,7 @@
             this.bellList = new System.Windows.Forms.ListBox();
             this.changeColorList = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.openSignWindowButton = new System.Windows.Forms.Button();
             this.signPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -276,11 +277,24 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "文字色／背景色変更";
             // 
+            // openSignWindowButton
+            // 
+            this.openSignWindowButton.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.openSignWindowButton.Location = new System.Drawing.Point(612, 35);
+            this.openSignWindowButton.Margin = new System.Windows.Forms.Padding(5);
+            this.openSignWindowButton.Name = "openSignWindowButton";
+            this.openSignWindowButton.Size = new System.Drawing.Size(251, 53);
+            this.openSignWindowButton.TabIndex = 24;
+            this.openSignWindowButton.Text = "別ウィンドウで表示";
+            this.openSignWindowButton.UseVisualStyleBackColor = true;
+            this.openSignWindowButton.Click += new System.EventHandler(this.OpenSignWindowButton_Click);
+            // 
             // ControlForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 720);
+            this.Controls.Add(this.openSignWindowButton);
             this.Controls.Add(this.changeColorList);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.bellList);
@@ -332,5 +346,6 @@
         private System.Windows.Forms.ListBox bellList;
         private System.Windows.Forms.ListBox changeColorList;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button openSignWindowButton;
     }
 }
