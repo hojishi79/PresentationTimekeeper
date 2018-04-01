@@ -178,22 +178,40 @@ namespace PresentationTimekeeper.Forms
         private void WriteBellChbList()
         {
             bellList.Items.Clear();
-            foreach (var pair in _setting.RingTiming.OrderByDescending(x => x.Key))
+            if (_setting.RingTiming.Any())
             {
-                var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
-                var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
-                bellList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} {pair.Value}回");
+                bellList.Enabled = true;
+                foreach (var pair in _setting.RingTiming.OrderByDescending(x => x.Key))
+                {
+                    var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
+                    var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
+                    bellList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} {pair.Value}回");
+                }
+            }
+            else
+            {
+                bellList.Enabled = false;
+                bellList.Items.Add("（なし）");
             }
         }
 
         private void WriteChangeColorChbList()
         {
             changeColorList.Items.Clear();
-            foreach (var pair in _setting.ChangeColorTiming.OrderByDescending(x => x.Key))
+            if (_setting.ChangeColorTiming.Any())
             {
-                var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
-                var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
-                changeColorList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} 文字色={pair.Value.Text.Name} 背景色={pair.Value.BackGround.Name}");
+                changeColorList.Enabled = true;
+                foreach (var pair in _setting.ChangeColorTiming.OrderByDescending(x => x.Key))
+                {
+                    var timeTypeStr = pair.Key < 0 ? "超過時間" : "残り時間";
+                    var hmsStr = Utility.Second2HmsString(Math.Abs(pair.Key));
+                    changeColorList.Items.Add($"[{timeTypeStr}] {hmsStr.Hour}:{hmsStr.Minute}:{hmsStr.Second} 文字色={pair.Value.Text.Name} 背景色={pair.Value.BackGround.Name}");
+                }
+            }
+            else
+            {
+                changeColorList.Enabled = false;
+                changeColorList.Items.Add("（なし）");
             }
         }
     }
