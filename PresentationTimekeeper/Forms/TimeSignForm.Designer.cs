@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeSignForm));
             this.timeTextType = new System.Windows.Forms.Label();
             this.timeText = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -65,7 +66,8 @@
             this.ClientSize = new System.Drawing.Size(1574, 829);
             this.Controls.Add(this.timeText);
             this.Controls.Add(this.timeTextType);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MinimumSize = new System.Drawing.Size(800, 450);
             this.Name = "TimeSignForm";
             this.Text = "TimeSignForm";
