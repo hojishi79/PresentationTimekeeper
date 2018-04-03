@@ -16,6 +16,12 @@ namespace PresentationTimekeeper.Forms
             TextBgColor = new TextBgColor();
         }
 
+        private void AddChangeColorForm_Load(object sender, EventArgs e)
+        {
+            textColorButton.BackColor = TextBgColor.Text;
+            backGroundColorButton.BackColor = TextBgColor.BackGround;
+        }
+
         private void TextColorButton_Click(object sender, EventArgs e)
         {
             var color = Utility.ChangeColor(textColorButton.BackColor);

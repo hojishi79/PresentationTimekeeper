@@ -242,6 +242,7 @@
             this.Name = "AddChangeColorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "色変更追加";
+            this.Load += new System.EventHandler(this.AddChangeColorForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.secondUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minuteUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hourUpDown)).EndInit();

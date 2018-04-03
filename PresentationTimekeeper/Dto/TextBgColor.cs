@@ -8,5 +8,11 @@ namespace PresentationTimekeeper.Dto
     {
         public Color Text { get; set; } 
         public Color BackGround { get; set; }
+
+        public TextBgColor()
+        {
+            Text = Color.White;
+            BackGround = Color.Black;
+        }
     }
 }
