@@ -13,7 +13,7 @@ namespace PresentationTimekeeper.Forms
         private Setting _setting;
         private bool _mainTimerIsRunning;
         private int _timeLeft;
-        private TimeSignForm _timeSignForm;
+        private SignpanelForm _timeSignForm;
 
         public ControlForm()
         {
@@ -234,7 +234,7 @@ namespace PresentationTimekeeper.Forms
         {
             if (_timeSignForm == null || _timeSignForm.IsDisposed)
             {
-                _timeSignForm = new TimeSignForm();
+                _timeSignForm = new SignpanelForm();
                 _timeSignForm.Show();
                 MirrorTimeSignForm(_timeLeft, _setting.OmitHourDisplay, null);
             }

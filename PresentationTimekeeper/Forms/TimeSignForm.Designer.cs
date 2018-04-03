@@ -1,6 +1,6 @@
 ﻿namespace PresentationTimekeeper.Forms
 {
-    partial class TimeSignForm
+    partial class SignpanelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeSignForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignpanelForm));
             this.timeTextType = new System.Windows.Forms.Label();
             this.timeText = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -58,7 +58,7 @@
             this.timeText.Text = "00:00:00";
             this.timeText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // TimeSignForm
+            // SignpanelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,8 +69,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MinimumSize = new System.Drawing.Size(800, 450);
-            this.Name = "TimeSignForm";
-            this.Text = "TimeSignForm";
+            this.Name = "SignpanelForm";
+            this.Text = "Signpanel | PresentationTimekeeper";
             this.Load += new System.EventHandler(this.TimeSignForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

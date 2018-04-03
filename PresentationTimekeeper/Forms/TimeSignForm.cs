@@ -5,9 +5,9 @@ using PresentationTimekeeper.Util;
 
 namespace PresentationTimekeeper.Forms
 {
-    public partial class TimeSignForm : Form
+    public partial class SignpanelForm : Form
     {
-        public TimeSignForm()
+        public SignpanelForm()
         {
             InitializeComponent();
         }
