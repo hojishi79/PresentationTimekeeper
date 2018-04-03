@@ -111,6 +111,10 @@ namespace PresentationTimekeeper.Forms
             _timeLeft = _setting.TargetTime;
             UpdateTimeText(_timeLeft);
             ChangeColor(_setting.DefaultColor);
+            if (_timeSignForm != null && _timeSignForm.Visible)
+            {
+                MirrorTimeSignForm(_timeLeft, _setting.OmitHourDisplay, _setting.DefaultColor);
+            }
         }
 
         public void LoadSetting()
